@@ -1,0 +1,22 @@
+#sproi {
+  text-align: center;
+  background-color: aquamarine;
+  border-bottom: 1px solid #000
+}
+
+th>select {
+  max-width: 400px;
+}
+
+.activelink {
+  background-color: aqua;
+}
+
+.accordion-button {
+  background-color: lightgrey;
+}
+
+.fn-style {
+  font-size: 0.8rem;
+  font-style: italic;
+}
