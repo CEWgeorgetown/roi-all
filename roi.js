@@ -115,7 +115,20 @@ function displayTable() {
         });
     },
     columnDefs: [{ width: 400, targets: 0 }],
-    responsive: true,
+    layout: {
+      bottom2Start: {
+        buttons: [
+          {
+            extend: "collection",
+            text: "Export",
+            className: "custom-html-collection",
+            buttons: ["csv", "excel"]
+          }]
+      },
+      top2End: null,
+    },
+    // responsive: true, // responsive removes columns dynamically according to screen
+    scrollX: true,
     pageLength: 10,
     deferRender: true,
     processing: true,
@@ -189,17 +202,17 @@ function drawChartDegreeHorizon(chtitle, sdata, currHorizon) {
     legend: {
       enabled: true
     },
-    credits: {
-      enabled: true,
-      text: "Georgetown Center on Education and the Workforce analysis of College Scorecard data, 2024",
-      position: {
-        align: "left",
-        x: 10
-      },
-      style: {
-        fontSize: "0.8rem"
-      }
-    },
+    // credits: {
+    //   enabled: true,
+    //   text: "Georgetown Center on Education and the Workforce analysis of College Scorecard data, 2024",
+    //   position: {
+    //     align: "left",
+    //     x: 10
+    //   },
+    //   style: {
+    //     fontSize: "0.8rem"
+    //   }
+    // },
     tooltip: {
       formatter: function () {
         return "<b>Year:</b> " + this.series.name + "<br>" +
@@ -340,16 +353,16 @@ function drawChartYearControl(chtitle, sdata, year) {
     legend: {
       enabled: true
     },
-    credits: {
-      text: "Georgetown Center on Education and the Workforce analysis of College Scorecard data, 2024",
-      position: {
-        align: "left",
-        x: 10
-      },
-      style: {
-        fontSize: "0.8rem"
-      }
-    },
+    // credits: {
+    //   text: "Georgetown Center on Education and the Workforce analysis of College Scorecard data, 2024",
+    //   position: {
+    //     align: "left",
+    //     x: 10
+    //   },
+    //   style: {
+    //     fontSize: "0.8rem"
+    //   }
+    // },
     tooltip: {
       formatter: function () {
         return "<b>Degree:</b> " + this.series.name + "<br>" +
@@ -489,16 +502,16 @@ function drawChartRankDecile(sdata, horizon, year) {
     legend: {
       enabled: true
     },
-    credits: {
-      text: "Georgetown Center on Education and the Workforce analysis of College Scorecard data, 2024",
-      position: {
-        align: "left",
-        x: 10
-      },
-      style: {
-        fontSize: "0.8rem"
-      }
-    },
+    // credits: {
+    //   text: "Georgetown Center on Education and the Workforce analysis of College Scorecard data, 2024",
+    //   position: {
+    //     align: "left",
+    //     x: 10
+    //   },
+    //   style: {
+    //     fontSize: "0.8rem"
+    //   }
+    // },
     tooltip: {
       formatter: function () {
         return "<b>Degree:</b> " + this.series.name + "<br>" +
@@ -595,17 +608,17 @@ function drawChartRankDecileByDegree(sdata, horizon, year, degree) {
     legend: {
       enabled: false
     },
-    credits: {
-      enabled: true,
-      text: "Georgetown Center on Education and the Workforce analysis of College Scorecard data, 2024",
-      position: {
-        align: "left",
-        x: 10
-      },
-      style: {
-        fontSize: "0.8rem"
-      }
-    },
+    // credits: {
+    //   enabled: true,
+    //   text: "Georgetown Center on Education and the Workforce analysis of College Scorecard data, 2024",
+    //   position: {
+    //     align: "left",
+    //     x: 10
+    //   },
+    //   style: {
+    //     fontSize: "0.8rem"
+    //   }
+    // },
     tooltip: {
       formatter: function () {
         return "<b>Degree:</b> " + this.series.name + "<br>" +
@@ -674,6 +687,9 @@ $(document).ready(function () {
     toggleTabs(false, true, false);
   });
   $("#nav-all").on("click", function () {
+    toggleTabs(false, false, true)
+  });
+  $("#inav-all").on("click", function () {
     toggleTabs(false, false, true)
   });
 

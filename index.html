@@ -24,7 +24,7 @@
   <!-- <script type="text/javascript" src="//cdn.datatables.net/responsive/3.0.0/js/responsive.dataTables.js"></script> -->
   <script type="text/javascript" src="//cdn.datatables.net/buttons/3.1.1/js/dataTables.buttons.js"></script>
   <script type="text/javascript" src="//cdn.datatables.net/buttons/3.1.1/js/buttons.dataTables.js"></script>
-  <!-- <script type="text/javascript" src="//cdn.datatables.net/buttons/3.1.1/js/buttons.html5.min.js"></script> -->
+  <script type="text/javascript" src="//cdn.datatables.net/buttons/3.1.1/js/buttons.html5.min.js"></script>
   <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
   <!-- <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script> -->
   <!-- <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script> -->
@@ -61,7 +61,7 @@
           <a class="nav-link" href="#" id="nav-rankings">Rankings</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#" id="nav-all">See everything</a>
+          <a class="nav-link" href="#" id="nav-all">Table</a>
         </li>
         <!-- <li class="nav-item">
           <a class="nav-link disabled" href="#" id="nav-faq">FAQ</a>
@@ -84,10 +84,18 @@
             <div id="collapse-degree-horizon-one" class="accordion-collapse collapse show"
               data-bs-parent="#accordion-degree-horizon">
               <div class="accordion-body">
-                This data tool contains ROI calculations for 42,000 year-institution records. Tabs, dropdown boxes,
-                radio buttons, and drilldown facilitate exploration of the data. Additionally, chart legends also act as
-                filters. There are nine years of data for an average of 4,600 institutions per year. Data were not
-                collected in 2016 and 2017. All the data is also available as an interactive table.
+                <p>
+                  This data tool contains ROI calculations for 42,000 institution-year records. Tabs, dropdown boxes,
+                  radio buttons, and drilldown facilitate exploration of the data. Additionally, chart legends also act as
+                  filters. 
+                </p>
+                <p>
+                  There are nine years of data for an average of 4,600 institutions per year.
+                </p>
+                <p>
+                  Data were not collected in 2016 and 2017.
+                </p>
+                  <p>All the data is also available as an <a href="#" id="inav-all">interactive table</a>.</p>
               </div>
             </div>
           </div>
@@ -101,11 +109,11 @@
             <div id="collapse-degree-horizon-two" class="accordion-collapse collapse"
               data-bs-parent="#accordion-degree-horizon">
               <div class="accordion-body">
-                <p>
+                <!-- <p>
                   The chart on the left shows how ROI varies over time for the median 10-year ROI for institutions
                   predominantly granting certificates. It also shows that the effects of the Great Recession can
                   persist.
-                </p>
+                </p> -->
 
                 <!-- Prior to 2018, the
                   average of the median 10-year ROI for public institutions granting certificates was $204,000; for
@@ -114,10 +122,14 @@
                   two periods however, the average changes across years were smaller. -->
 
                 <p>
-                  The chart on the right shows how ROI varies with the length of horizon. By construction, ROI is higher
+                  The chart on the right shows how ROI varies across 10, 15, 20, 30, or 40-year intervals, or "horizons."
+                  <!-- The chart on the right shows how ROI varies with the length of horizon. By construction, ROI is higher
                   the longer the horizon. For horizons under 20 years, certificates and associate's degrees have a
                   median ROI that exceed or match those of bachelor's degree institutions. This is because obtaining a
-                  bachelor's degree requires a greater investment in time and costs.
+                  bachelor's degree requires a greater investment in time and costs. -->
+                </p>
+                <p>
+                  Note that at the 10, 15, or 20 year interval, certificates and associate's degrees have a median ROI that exceed or match those of bachelor's degree-granting institutions. This is because obtaining a bachelor's degree requires a greater investment in time and costs. 
                 </p>
                 <span class="fn-style">*&nbsp;The years on the x-axis are the years earnings are measured in the College
                   Scorecard (not the year the College Scorecard updates are released).</span>
@@ -293,7 +305,7 @@
             data-bs-parent="#accordion-degree-horizon">
             <div class="accordion-body">
               <p>
-                The chart on the left shows the shares of different degree levels being in different ROI deciles for a
+                The chart on the left shows the shares of different degree levels in different ROI deciles for a
                 given time horizon. For example, 60 percent of institutions predominantly granting certificates are in
                 the top ROI decile in the 10-year horizon compared to 16 percent of bachelor's degrees. These shares can
                 be interpreted as the likelihood of the degree being in the decile.
@@ -319,7 +331,7 @@
             <div class="accordion-body">
               <li>How does the likelihood of being a certain decile change by horizon?
               </li>
-              <li>How does likelihood of being in a certain decile change by degree?
+              <li>How does the likelihood of being in a certain decile change by degree?
               </li>
               <li>Hover over the bars of the chart for more information; click on the bars to see a list of
                 institutions in that category.</li>
@@ -555,6 +567,9 @@
         </div>
       </div>
     </div>
+  </div>
+  <div class="fn-style">
+    Source: Georgetown University Center on Education and the Workforce analysis of data from the US Department of Education, College Scorecard, 2009–22.
   </div>
   </div> <!-- container -->
 </body>
