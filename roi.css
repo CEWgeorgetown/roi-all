@@ -1,7 +1,8 @@
 #sproi {
   text-align: center;
-  background-color: aquamarine;
-  border-bottom: 1px solid #000
+  background-color: #266150;
+  opacity: 0.3;
+  color: #fff
 }
 
 th>select {
@@ -9,14 +10,33 @@ th>select {
 }
 
 .activelink {
-  background-color: aqua;
+  background-color: #EAF4F9;
 }
 
 .accordion-button {
-  background-color: lightgrey;
+  background-color: #B9D9EC;
 }
 
 .fn-style {
   font-size: 0.8rem;
   font-style: italic;
+}
+
+div.dt-container .dt-search {
+  float: right;
+  width: 50%;
+}
+
+div.dt-container .dt-search input {
+  float: right;
+  width: 85%;
+}
+
+div.dt-paging {
+  float: right;
+}
+
+#dt-length-0 {
+/* padding-right: 10px; */
+margin-right: 5px;
 }

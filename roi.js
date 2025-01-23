@@ -127,6 +127,12 @@ function displayTable() {
       },
       top2End: null,
     },
+    language: {
+      entries: {
+        _: " Entries",
+        1: " Entry"
+      }
+    },
     // responsive: true, // responsive removes columns dynamically according to screen
     scrollX: true,
     pageLength: 10,
