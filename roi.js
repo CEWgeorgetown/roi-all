@@ -12,6 +12,18 @@ const YEARS = ["2009-10", "2011-12", "2012-13", "2013-14", "2014-15", "2018-19",
 const HORIZONS = [10, 15, 20, 30, 40];
 const DECILES = ["Top 10%", "20%", "30%", "40%", "50%", "60%", "70%", "80%", "90%", "Bottom 10%"];
 
+function degreeValueToText(d) {
+  if (d == 1) return DEGCERT;
+  else if (d == 2) return DEGAA;
+  else if (d == 3) return DEGBA;
+}
+
+function renameDegree(d) {
+  if (d == DEGCERT) return "Certificates";
+  else if (d == DEGAA) return "Associate's degrees";
+  else if (d == DEGBA) return "Bachelor's degrees";
+}
+
 function displayModal(d, modalTitle) {
 
   $(".modal-title").empty();
@@ -208,17 +220,17 @@ function drawChartDegreeHorizon(chtitle, sdata, currHorizon) {
     legend: {
       enabled: true
     },
-    // credits: {
-    //   enabled: true,
-    //   text: "Georgetown Center on Education and the Workforce analysis of College Scorecard data, 2024",
-    //   position: {
-    //     align: "left",
-    //     x: 10
-    //   },
-    //   style: {
-    //     fontSize: "0.8rem"
-    //   }
-    // },
+    credits: {
+      enabled: false,
+      text: "Georgetown Center on Education and the Workforce analysis of College Scorecard data, 2024",
+      position: {
+        align: "left",
+        x: 10
+      },
+      style: {
+        fontSize: "0.8rem"
+      }
+    },
     tooltip: {
       formatter: function () {
         return "<b>Year:</b> " + this.series.name + "<br>" +
@@ -307,8 +319,9 @@ function getDataForChartYearControl(year, control) {
   let yearcontrol = [];
   let subset = roisumm.filter(obj => obj.year == year && obj.control == control);
   [DEGCERT, DEGAA, DEGBA].forEach(function (ditem, dindex) {
+    let dname = renameDegree(ditem);
     let sdata = {
-      name: ditem,
+      name: dname,
       color: chartColors[dindex],
       data: []
     };
@@ -359,16 +372,17 @@ function drawChartYearControl(chtitle, sdata, year) {
     legend: {
       enabled: true
     },
-    // credits: {
-    //   text: "Georgetown Center on Education and the Workforce analysis of College Scorecard data, 2024",
-    //   position: {
-    //     align: "left",
-    //     x: 10
-    //   },
-    //   style: {
-    //     fontSize: "0.8rem"
-    //   }
-    // },
+    credits: {
+      enabled: false,
+      text: "Georgetown Center on Education and the Workforce analysis of College Scorecard data, 2024",
+      position: {
+        align: "left",
+        x: 10
+      },
+      style: {
+        fontSize: "0.8rem"
+      }
+    },
     tooltip: {
       formatter: function () {
         return "<b>Degree:</b> " + this.series.name + "<br>" +
@@ -447,8 +461,9 @@ function getDataForRankDecile(year, horizon) {
   let rankDecile = [];
   let subset = ranksumm.filter(obj => obj.year == year && obj.horizon == horizon);
   [DEGCERT, DEGAA, DEGBA].forEach(function (ditem, dindex) {
+    let dname = renameDegree(ditem);
     let sdata = {
-      name: ditem,
+      name: dname,
       color: chartColors[dindex],
       data: []
     };
@@ -508,16 +523,17 @@ function drawChartRankDecile(sdata, horizon, year) {
     legend: {
       enabled: true
     },
-    // credits: {
-    //   text: "Georgetown Center on Education and the Workforce analysis of College Scorecard data, 2024",
-    //   position: {
-    //     align: "left",
-    //     x: 10
-    //   },
-    //   style: {
-    //     fontSize: "0.8rem"
-    //   }
-    // },
+    credits: {
+      enabled: false,
+      text: "Georgetown Center on Education and the Workforce analysis of College Scorecard data, 2024",
+      position: {
+        align: "left",
+        x: 10
+      },
+      style: {
+        fontSize: "0.8rem"
+      }
+    },
     tooltip: {
       formatter: function () {
         return "<b>Degree:</b> " + this.series.name + "<br>" +
@@ -614,17 +630,17 @@ function drawChartRankDecileByDegree(sdata, horizon, year, degree) {
     legend: {
       enabled: false
     },
-    // credits: {
-    //   enabled: true,
-    //   text: "Georgetown Center on Education and the Workforce analysis of College Scorecard data, 2024",
-    //   position: {
-    //     align: "left",
-    //     x: 10
-    //   },
-    //   style: {
-    //     fontSize: "0.8rem"
-    //   }
-    // },
+    credits: {
+      enabled: false,
+      text: "Georgetown Center on Education and the Workforce analysis of College Scorecard data, 2024",
+      position: {
+        align: "left",
+        x: 10
+      },
+      style: {
+        fontSize: "0.8rem"
+      }
+    },
     tooltip: {
       formatter: function () {
         return "<b>Degree:</b> " + this.series.name + "<br>" +
@@ -676,6 +692,7 @@ $(document).ready(function () {
   drawChartRankDecile(chartData3, currRankHorizon, currRankYear);
 
   let currRankDegree = DEGCERT;
+  currRankDegree = renameDegree(currRankDegree);
   let chartData4 = getDataForRankDecileByDegree(chartData3, currRankDegree);
   drawChartRankDecileByDegree(chartData4, currRankHorizon, currRankYear, currRankDegree);
 
@@ -702,7 +719,8 @@ $(document).ready(function () {
   // events for controls for ROI over years
   $("#select-degree").change(function () {
     if ($("#select-degree :selected").val() > 0) {
-      currDeg = $("#select-degree :selected").text();
+      // currDeg = $("#select-degree :selected").text();
+      currDeg = degreeValueToText($("#select-degree :selected").val());
       chartData = getDataForChartDegreeHorizon(currDeg, currHorizon);
       drawChartDegreeHorizon(currDeg, chartData, currHorizon);
     }
@@ -750,7 +768,9 @@ $(document).ready(function () {
 
   $("#select-degree-rank").change(function () {
     if ($("#select-degree-rank :selected").val() > 0) {
-      currRankDegree = $("#select-degree-rank :selected").text();
+      // currRankDegree = $("#select-degree-rank :selected").text();
+      currRankDegree = degreeValueToText($("#select-degree-rank :selected").val());
+      currRankDegree = renameDegree(currRankDegree);
       chartData4 = getDataForRankDecileByDegree(chartData3, currRankDegree);
       drawChartRankDecileByDegree(chartData4, currRankHorizon, currRankYear, currRankDegree);
     }
