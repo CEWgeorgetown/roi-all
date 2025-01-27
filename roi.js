@@ -611,10 +611,10 @@ function drawChartRankDecileByDegree(sdata, horizon, year, degree) {
     xAxis: {
       categories: DECILES,
       title: {
-        text: "Decile"
+        text: "ROI decile"
       },
       accessibility: {
-        description: "Decile for share for this degree"
+        description: "ROI decile for share for this degree"
       }
     },
     yAxis: {
