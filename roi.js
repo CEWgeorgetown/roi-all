@@ -2,7 +2,7 @@ Highcharts.setOptions({
   lang: {
     thousandsSep: ","
   }
-})
+});
 
 const DEGCERT = "Certificate";
 const DEGAA = "Associate's";
@@ -190,7 +190,7 @@ function drawChartDegreeHorizon(chtitle, sdata, currHorizon) {
     ctitle = chtitle.toLowerCase() + "s";
   }
   else {
-    ctitle = chtitle.toLowerCase() + " degrees"
+    ctitle = chtitle.toLowerCase() + " degrees";
   }
 
   Highcharts.chart("chart-degree-horizon", {
@@ -264,20 +264,20 @@ function drawChartDegreeHorizon(chtitle, sdata, currHorizon) {
               let mdata = [];
               if (h == 10) {
                 mdata = modalData.map(({ y, nm, st, pd, c, npv10: npv, npv15, npv20, npv30, npv40 }) =>
-                  ({ y, nm, st, pd, c, npv, npv15, npv20, npv30, npv40 }))
+                  ({ y, nm, st, pd, c, npv, npv15, npv20, npv30, npv40 }));
               } else if (h == 15) {
                 mdata = modalData.map(({ y, nm, st, pd, c, npv10, npv15: npv, npv20, npv30, npv40 }) =>
-                  ({ y, nm, st, pd, c, npv10, npv, npv20, npv30, npv40 }))
+                  ({ y, nm, st, pd, c, npv10, npv, npv20, npv30, npv40 }));
               } else if (h == 20) {
                 mdata = modalData.map(({ y, nm, st, pd, c, npv10, npv15, npv20: npv, npv30, npv40 }) =>
-                  ({ y, nm, st, pd, c, npv10, npv15, npv, npv30, npv40 }))
+                  ({ y, nm, st, pd, c, npv10, npv15, npv, npv30, npv40 }));
               } else if (h == 30) {
                 mdata = modalData.map(({ y, nm, st, pd, c, npv10, npv15, npv20, npv30: npv, npv40 }) =>
-                  ({ y, nm, st, pd, c, npv10, npv15, npv20, npv, npv40 }))
+                  ({ y, nm, st, pd, c, npv10, npv15, npv20, npv, npv40 }));
               } else if (h == 40) {
                 mdata = modalData.map(({ y, nm, st, pd, c, npv10, npv15, npv20, npv30, npv40: npv }) =>
-                  ({ y, nm, st, pd, c, npv10, npv15, npv20, npv30, npv }))
-              };
+                  ({ y, nm, st, pd, c, npv10, npv15, npv20, npv30, npv }));
+              }
               $("#modal-inst").modal('show');
               displayModal(mdata, "Median " + currHorizon + "-year ROI for " + ctitle + " for " + yr + ": " + c + " institutions");
             }
@@ -306,7 +306,7 @@ function getDataForChartDegreeHorizon(degree, horizon) {
       let ydata = cdata.filter(obj => obj.year == yitem);
       // Returns an array with one item
       // TODO: There has to be a better way to do this instead of using the array reference [0]
-      sdata.data.push(ydata[0].NPV)
+      sdata.data.push(ydata[0].NPV);
     });
     degreehorizon.push(sdata);
   });
@@ -330,7 +330,7 @@ function getDataForChartYearControl(year, control) {
       let ddata = horizondata.filter(obj => obj.horizon == hitem);
       // Returns an array with one item
       // TODO: There has to be a better way to do this instead of using the array reference [0]
-      sdata.data.push(ddata[0].NPV)
+      sdata.data.push(ddata[0].NPV);
     });
     yearcontrol.push(sdata);
   });
@@ -415,20 +415,20 @@ function drawChartYearControl(chtitle, sdata, year) {
               let mdata = [];
               if (h == 10) {
                 mdata = modalData.map(({ y, nm, st, pd, c, npv10: npv, npv15, npv20, npv30, npv40 }) =>
-                  ({ y, nm, st, pd, c, npv, npv15, npv20, npv30, npv40 }))
+                  ({ y, nm, st, pd, c, npv, npv15, npv20, npv30, npv40 }));
               } else if (h == 15) {
                 mdata = modalData.map(({ y, nm, st, pd, c, npv10, npv15: npv, npv20, npv30, npv40 }) =>
-                  ({ y, nm, st, pd, c, npv10, npv, npv20, npv30, npv40 }))
+                  ({ y, nm, st, pd, c, npv10, npv, npv20, npv30, npv40 }));
               } else if (h == 20) {
                 mdata = modalData.map(({ y, nm, st, pd, c, npv10, npv15, npv20: npv, npv30, npv40 }) =>
-                  ({ y, nm, st, pd, c, npv10, npv15, npv, npv30, npv40 }))
+                  ({ y, nm, st, pd, c, npv10, npv15, npv, npv30, npv40 }));
               } else if (h == 30) {
                 mdata = modalData.map(({ y, nm, st, pd, c, npv10, npv15, npv20, npv30: npv, npv40 }) =>
-                  ({ y, nm, st, pd, c, npv10, npv15, npv20, npv, npv40 }))
+                  ({ y, nm, st, pd, c, npv10, npv15, npv20, npv, npv40 }));
               } else if (h == 40) {
                 mdata = modalData.map(({ y, nm, st, pd, c, npv10, npv15, npv20, npv30, npv40: npv }) =>
-                  ({ y, nm, st, pd, c, npv10, npv15, npv20, npv30, npv }))
-              };
+                  ({ y, nm, st, pd, c, npv10, npv15, npv20, npv30, npv }));
+              }
               $("#modal-inst").modal('show');
               displayModal(mdata, "Median " + h + "-year ROI in " + yr + ": " + c + " institutions");
             }
@@ -485,8 +485,8 @@ function getDataForRankDecileByDegree(data, degree) {
   };
 
   subset[0].data.forEach(function (item, index) {
-    mdata.data.push({ y: item.share_p, N: item.N, share_d: item.y, color: "#B9D9EC" })
-  })
+    mdata.data.push({ y: item.share_p, N: item.N, share_d: item.y, color: "#B9D9EC" });
+  });
   return [mdata];
 }
 
@@ -551,7 +551,7 @@ function drawChartRankDecile(sdata, horizon, year) {
         dataLabels: {
           enabled: true,
           formatter: function () {
-            return Highcharts.numberFormat(this.y, 0, '.', ',') + "%"
+            return Highcharts.numberFormat(this.y, 0, '.', ',') + "%";
           }
         },
         point: {
@@ -566,20 +566,20 @@ function drawChartRankDecile(sdata, horizon, year) {
               let mdata = [];
               if (h == 10) {
                 mdata = modalData.filter(obj => obj.dnpv10 == r).map(({ y, nm, st, pd, c, npv10: npv, npv15, npv20, npv30, npv40 }) =>
-                  ({ y, nm, st, pd, c, npv, npv15, npv20, npv30, npv40 }))
+                  ({ y, nm, st, pd, c, npv, npv15, npv20, npv30, npv40 }));
               } else if (h == 15) {
                 mdata = modalData.filter(obj => obj.dnpv15 == r).map(({ y, nm, st, pd, c, npv10, npv15: npv, npv20, npv30, npv40 }) =>
-                  ({ y, nm, st, pd, c, npv10, npv, npv20, npv30, npv40 }))
+                  ({ y, nm, st, pd, c, npv10, npv, npv20, npv30, npv40 }));
               } else if (h == 20) {
                 mdata = modalData.filter(obj => obj.dnpv20 == r).map(({ y, nm, st, pd, c, npv10, npv15, npv20: npv, npv30, npv40 }) =>
-                  ({ y, nm, st, pd, c, npv10, npv15, npv, npv30, npv40 }))
+                  ({ y, nm, st, pd, c, npv10, npv15, npv, npv30, npv40 }));
               } else if (h == 30) {
                 mdata = modalData.filter(obj => obj.dnpv30 == r).map(({ y, nm, st, pd, c, npv10, npv15, npv20, npv30: npv, npv40 }) =>
-                  ({ y, nm, st, pd, c, npv10, npv15, npv20, npv, npv40 }))
+                  ({ y, nm, st, pd, c, npv10, npv15, npv20, npv, npv40 }));
               } else if (h == 40) {
                 mdata = modalData.filter(obj => obj.dnpv40 == r).map(({ y, nm, st, pd, c, npv10, npv15, npv20, npv30, npv40: npv }) =>
-                  ({ y, nm, st, pd, c, npv10, npv15, npv20, npv30, npv }))
-              };
+                  ({ y, nm, st, pd, c, npv10, npv15, npv20, npv30, npv }));
+              }
               $("#modal-inst").modal('show');
               displayModal(mdata, "Median " + h + "-year ROI in " + yr);
             }
@@ -654,7 +654,7 @@ function drawChartRankDecileByDegree(sdata, horizon, year, degree) {
         dataLabels: {
           enabled: true,
           formatter: function () {
-            return Highcharts.numberFormat(this.y, 0, '.', ',') + "%"
+            return Highcharts.numberFormat(this.y, 0, '.', ',') + "%";
           }
         },
         point: {
@@ -681,7 +681,7 @@ $(document).ready(function () {
 
   // set up table for ROI over horizon
   let currType = "Public";
-  let currYear = "2021-22"
+  let currYear = "2021-22";
   let chartData2 = getDataForChartYearControl(currYear, currType);
   drawChartYearControl(currType, chartData2, currYear);
 
@@ -710,10 +710,10 @@ $(document).ready(function () {
     toggleTabs(false, true, false);
   });
   $("#nav-all").on("click", function () {
-    toggleTabs(false, false, true)
+    toggleTabs(false, false, true);
   });
   $("#inav-all").on("click", function () {
-    toggleTabs(false, false, true)
+    toggleTabs(false, false, true);
   });
 
   // events for controls for ROI over years
@@ -776,4 +776,4 @@ $(document).ready(function () {
     }
   });
 
-})
+});

@@ -31,9 +31,9 @@
   <script type="text/javascript" src="//cdn.datatables.net/buttons/3.1.1/js/buttons.html5.min.js"></script>
   <!-- <script type="text/javascript" src="//cdn.datatables.net/buttons/3.1.1/js/buttons.print.min.js"></script> -->
   <script src="//code.highcharts.com/stock/highstock.js"></script>
-  <script src="https://code.highcharts.com/highcharts-more.js"></script>
-  <script src="https://code.highcharts.com/modules/dumbbell.js"></script>
-  <script src="https://code.highcharts.com/modules/lollipop.js"></script>
+  <script src="//code.highcharts.com/highcharts-more.js"></script>
+  <script src="//code.highcharts.com/modules/dumbbell.js"></script>
+  <script src="//code.highcharts.com/modules/lollipop.js"></script>
   <script src="//code.highcharts.com/modules/exporting.js"></script>
   <script src="//code.highcharts.com/modules/export-data.js"></script>
   <script src="//code.highcharts.com/modules/accessibility.js"></script>
@@ -153,14 +153,16 @@
               data-bs-parent="#accordion-degree-horizon">
               <div class="accordion-body">
                 Use the data tool to explore the following questions:
-                <li>How does ROI change by degree level? Are the year-to-year changes larger for higher level degrees?
-                </li>
-                <li>How does ROI change by time horizon? Are the year-to-year changes larger for longer time horizons?
-                </li>
-                <li>Is ROI consistently different for different types of institutions?
-                </li>
-                <li>How does ROI change across different years?
-                </li>
+                <ul>
+                  <li>How does ROI change by degree level? Are the year-to-year changes larger for higher level degrees?
+                  </li>
+                  <li>How does ROI change by time horizon? Are the year-to-year changes larger for longer time horizons?
+                  </li>
+                  <li>Is ROI consistently different for different types of institutions?
+                  </li>
+                  <li>How does ROI change across different years?
+                  </li>
+                </ul>
                 <p>Hover over the bars of the chart for more information; click on the bars to see a list of
                   institutions in that category.</p>
               </div>
@@ -293,154 +295,156 @@
         </div>
       </div> -->
     </div>
-  </div>
 
-  <div id="tab-rankings">
+    <div id="tab-rankings">
 
-    <div class="col">
-      <div class="accordion" id="accordion-degree-horizon">
-        <div class="accordion-item">
-          <h2 class="accordion-header">
-            <button class="accordion-button" type="button" data-bs-toggle="collapse"
-              data-bs-target="#collapse-degree-horizon-one" aria-expanded="true" aria-controls="collapseOne">
-              <strong>What this chart shows</strong>
-            </button>
-          </h2>
-          <div id="collapse-degree-horizon-one" class="accordion-collapse collapse show"
-            data-bs-parent="#accordion-degree-horizon">
-            <div class="accordion-body">
-              <p>
-                The chart on the left shows how the ROI of an institution changes over time horizons based on the
-                predominant credential that the institution offers.
-                For example, at the ten-year horizon, 60 percent of institutions that predominantly grant certificates
-                are in the top ROI decile,
-                compared to 16 percent of institutions that predominantly offer bachelor's degrees. By the 40-year time
-                horizon, only 11 percent of institutions that predominantly offer certificates remain in the top ROI
-                decile, but 81 percent of institutions that predominantly offer bachelor’s degrees are in the top
-                decile.
-              </p>
-              <p>
-                The chart on the right shows the likelihood of a type of degree being in a particular decile in each
-                time horizon. For certificates with a 10-year horizon, 14 percent are in the top decile. In this chart,
-                the percentages sum to 100 across deciles.
-              </p>
+      <div class="col">
+        <div class="accordion" id="accordion-degree-rank">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                data-bs-target="#collapse-degree-rank-one" aria-expanded="true" aria-controls="collapseOne">
+                <strong>What this chart shows</strong>
+              </button>
+            </h2>
+            <div id="collapse-degree-rank-one" class="accordion-collapse collapse show"
+              data-bs-parent="#accordion-degree-rank">
+              <div class="accordion-body">
+                <p>
+                  The chart on the left shows how the ROI of an institution changes over time horizons based on the
+                  predominant credential that the institution offers.
+                  For example, at the ten-year horizon, 60 percent of institutions that predominantly grant certificates
+                  are in the top ROI decile,
+                  compared to 16 percent of institutions that predominantly offer bachelor's degrees. By the 40-year
+                  time
+                  horizon, only 11 percent of institutions that predominantly offer certificates remain in the top ROI
+                  decile, but 81 percent of institutions that predominantly offer bachelor’s degrees are in the top
+                  decile.
+                </p>
+                <p>
+                  The chart on the right shows the likelihood of a type of degree being in a particular decile in each
+                  time horizon. For certificates with a 10-year horizon, 14 percent are in the top decile. In this
+                  chart,
+                  the percentages sum to 100 across deciles.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#collapse-degree-rank-two" aria-expanded="false"
+                aria-controls="collapse-degree-rank-two">
+                <strong>More to explore</strong>
+              </button>
+            </h2>
+            <div id="collapse-degree-rank-two" class="accordion-collapse collapse"
+              data-bs-parent="#accordion-degree-rank">
+              <div class="accordion-body">
+                <ul>
+                  Use the data tool to explore the following questions:
+                  <li>How does the ROI decile of an institution that predominantly offers a particular credential change
+                    across different time horizons?
+                  </li>
+                  <li>How does the likelihood of being in a certain decile change by degree?
+                  </li>
+                </ul>
+                <p>Hover over the bars of the chart for more information; click on the bars to see a list of
+                  institutions in that category.</p>
+              </div>
             </div>
           </div>
         </div>
-        <div class="accordion-item">
-          <h2 class="accordion-header">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-              data-bs-target="#collapse-degree-horizon-two" aria-expanded="false"
-              aria-controls="collapse-degree-horizon-two">
-              <strong>More to explore</strong>
-            </button>
-          </h2>
-          <div id="collapse-degree-horizon-two" class="accordion-collapse collapse"
-            data-bs-parent="#accordion-degree-horizon">
-            <div class="accordion-body">
-              Use the data tool to explore the following questions:
-              <li>How does the ROI decile of an institution that predominantly offers a particular credential change
-                across different time horizons?
-              </li>
-              <li>How does the likelihood of being in a certain decile change by degree?
-              </li>
-              <p>Hover over the bars of the chart for more information; click on the bars to see a list of
-                institutions in that category.</p>
-            </div>
-          </div>
-        </div>
+
       </div>
 
-    </div>
-
-    <div class="row pt-4">
-      <div class="col-lg-8 col-sm-12">
-        <div class="col-12 row">
-          <div class="col-lg-3 col-sm-12">
-            <select class="form-select" id="select-year-rank">
-              <option value="0" selected>Select a year</option>
-              <option value="1">2009-10</option>
-              <option value="2">2011-12</option>
-              <option value="3">2012-13</option>
-              <option value="4">2013-14</option>
-              <option value="5">2014-15</option>
-              <option value="6">2018-19</option>
-              <option value="7">2019-20</option>
-              <option value="8">2020-21</option>
-              <option value="9">2021-22</option>
-            </select>
-          </div>
-          <div class="col-9">
-            <div class="d-inline-flex">
-              <span class="me-4">Horizon:</span>
-              <div class="form-check me-3">
-                <input class="form-check-input" type="radio" name="radio-horizon-rank" value="10" id="radio-rank-10"
-                  checked>
-                <label class="form-check-label" for="radio-10">
-                  10 years
-                </label>
-              </div>
-              <div class="form-check me-4">
-                <input class="form-check-input" type="radio" name="radio-horizon-rank" value="15" id="radio-rank-15">
-                <label class="form-check-label" for="radio-15">
-                  15 years
-                </label>
-              </div>
-              <div class="form-check me-4">
-                <input class="form-check-input" type="radio" name="radio-horizon-rank" value="20" id="radio-rank-20">
-                <label class="form-check-label" for="radio-20">
-                  20 years
-                </label>
-              </div>
-              <div class="form-check me-4">
-                <input class="form-check-input" type="radio" name="radio-horizon-rank" value="30" id="radio-rank-30">
-                <label class="form-check-label" for="radio-30">
-                  30 years
-                </label>
-              </div>
-              <div class="form-check me-4">
-                <input class="form-check-input" type="radio" name="radio-horizon-rank" value="40" id="radio-rank-40">
-                <label class="form-check-label" for="radio-40">
-                  40 years
-                </label>
+      <div class="row pt-4">
+        <div class="col-lg-8 col-sm-12">
+          <div class="col-12 row">
+            <div class="col-lg-3 col-sm-12">
+              <select class="form-select" id="select-year-rank">
+                <option value="0" selected>Select a year</option>
+                <option value="1">2009-10</option>
+                <option value="2">2011-12</option>
+                <option value="3">2012-13</option>
+                <option value="4">2013-14</option>
+                <option value="5">2014-15</option>
+                <option value="6">2018-19</option>
+                <option value="7">2019-20</option>
+                <option value="8">2020-21</option>
+                <option value="9">2021-22</option>
+              </select>
+            </div>
+            <div class="col-9">
+              <div class="d-inline-flex">
+                <span class="me-4">Horizon:</span>
+                <div class="form-check me-3">
+                  <input class="form-check-input" type="radio" name="radio-horizon-rank" value="10" id="radio-rank-10"
+                    checked>
+                  <label class="form-check-label" for="radio-10">
+                    10 years
+                  </label>
+                </div>
+                <div class="form-check me-4">
+                  <input class="form-check-input" type="radio" name="radio-horizon-rank" value="15" id="radio-rank-15">
+                  <label class="form-check-label" for="radio-15">
+                    15 years
+                  </label>
+                </div>
+                <div class="form-check me-4">
+                  <input class="form-check-input" type="radio" name="radio-horizon-rank" value="20" id="radio-rank-20">
+                  <label class="form-check-label" for="radio-20">
+                    20 years
+                  </label>
+                </div>
+                <div class="form-check me-4">
+                  <input class="form-check-input" type="radio" name="radio-horizon-rank" value="30" id="radio-rank-30">
+                  <label class="form-check-label" for="radio-30">
+                    30 years
+                  </label>
+                </div>
+                <div class="form-check me-4">
+                  <input class="form-check-input" type="radio" name="radio-horizon-rank" value="40" id="radio-rank-40">
+                  <label class="form-check-label" for="radio-40">
+                    40 years
+                  </label>
+                </div>
               </div>
             </div>
           </div>
-        </div>
 
-        <div>
-          <div class="col-12 col-sm-12">
-            <figure class="highcharts-figure">
-              <div id="chart-rank-decile"></div>
-            </figure>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-4 col-sm-12">
-        <div class="col-12 row">
-          <div class="col-lg-6 col-sm-12">
-            <select class="form-select" id="select-degree-rank">
-              <option value="0" selected>Select a degree level</option>
-              <option value="1">Certificates</option>
-              <option value="2">Associate's degrees</option>
-              <option value="3">Bachelor's degrees</option>
-            </select>
-          </div>
           <div>
-            <div class="col-12">
+            <div class="col-12 col-sm-12">
               <figure class="highcharts-figure">
-                <div id="chart-rank-deg"></div>
+                <div id="chart-rank-decile"></div>
               </figure>
             </div>
           </div>
+        </div>
+        <div class="col-lg-4 col-sm-12">
+          <div class="col-12 row">
+            <div class="col-lg-6 col-sm-12">
+              <select class="form-select" id="select-degree-rank">
+                <option value="0" selected>Select a degree level</option>
+                <option value="1">Certificates</option>
+                <option value="2">Associate's degrees</option>
+                <option value="3">Bachelor's degrees</option>
+              </select>
+            </div>
+            <div>
+              <div class="col-12">
+                <figure class="highcharts-figure">
+                  <div id="chart-rank-deg"></div>
+                </figure>
+              </div>
+            </div>
+
+          </div>
 
         </div>
-
-
       </div>
-    </div>
 
-    <!-- <div class="row pt-4">
+      <!-- <div class="row pt-4">
       <div class="col-2">
         <select class="form-select" id="select-year-rank">
           <option value="0" selected>Select a year</option>
@@ -503,7 +507,7 @@
 
     </div> -->
 
-    <!-- <div class="row">
+      <!-- <div class="row">
       <div class="col-8">
         <figure class="highcharts-figure">
           <div id="chart-rank-decile"></div>
@@ -518,75 +522,76 @@
       </div>
     </div> -->
 
-  </div>
-
-  <div id="tab-all-data">
-
-    <div class="row">
-      <div id="div-table-all" class="px-4 py-2">
-        <table id="tbl-all" class="display" style="width:100%">
-          <thead>
-            <tr>
-              <th colspan="5" data-dt-order="disable"></th>
-              <th colspan="5" id="sproi">ROI (2023$)</th>
-            </tr>
-            <tr>
-              <th>Institution<br></th>
-              <th>State<br></th>
-              <th>Institution type<br></th>
-              <th>Predominant degree<br></th>
-              <th>Year<br></th>
-              <th>10-year</th>
-              <th>15-year</th>
-              <th>20-year</th>
-              <th>30-year</th>
-              <th>40-year</th>
-            </tr>
-          </thead>
-        </table>
-      </div>
     </div>
 
-  </div>
+    <div id="tab-all-data">
 
-  <div class="modal modal-lg" id="modal-inst" tabindex="-1">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title"></h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      <div class="row">
+        <div id="div-table-all" class="px-4 py-2">
+          <table id="tbl-all" class="display" style="width:100%">
+            <thead>
+              <tr>
+                <th colspan="5" data-dt-order="disable"></th>
+                <th colspan="5" id="sproi">ROI (2023$)</th>
+              </tr>
+              <tr>
+                <th>Institution<br></th>
+                <th>State<br></th>
+                <th>Institution type<br></th>
+                <th>Predominant degree<br></th>
+                <th>Year<br></th>
+                <th>10-year</th>
+                <th>15-year</th>
+                <th>20-year</th>
+                <th>30-year</th>
+                <th>40-year</th>
+              </tr>
+            </thead>
+          </table>
         </div>
-        <div class="modal-body">
-          <div id="table-detail" class="pt-2">
-            <table id="table-inst" class="display" style="width:100%">
-              <thead>
-                <tr>
-                  <th>Institution<br></th>
-                  <th>State<br></th>
-                  <!-- <th>Institution type</th>
+      </div>
+
+    </div>
+
+    <div class="modal modal-lg" id="modal-inst" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title"></h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div id="table-detail" class="pt-2">
+              <table id="table-inst" class="display" style="width:100%">
+                <thead>
+                  <tr>
+                    <th>Institution<br></th>
+                    <th>State<br></th>
+                    <!-- <th>Institution type</th>
                     <th>Predominant degree</th>
                     <th>Year</th> -->
-                  <th>ROI</th>
-                </tr>
-              </thead>
-            </table>
-          </div>
+                    <th>ROI</th>
+                  </tr>
+                </thead>
+              </table>
+            </div>
 
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
         </div>
       </div>
     </div>
+    <div class="fn-style">
+      <p>
+        Source: Georgetown University Center on Education and the Workforce analysis of data from the US Department of
+        Education, College Scorecard, 2009–22.
+      </p>
+      <p>Percentages may not sum due to rounding.</p>
+    </div>
   </div>
-  <div class="fn-style">
-    <p>
-      Source: Georgetown University Center on Education and the Workforce analysis of data from the US Department of
-      Education, College Scorecard, 2009–22.
-    </p>
-    <p>Percentages may not sum due to rounding.</p>
-  </div>
-  </div> <!-- container -->
+
 </body>
 
 </html>
