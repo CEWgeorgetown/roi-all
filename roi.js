@@ -24,6 +24,12 @@ function renameDegree(d) {
   else if (d == DEGBA) return "Bachelor's degrees";
 }
 
+function degreenameToValue(d) {
+  if (d == "Certificates") return DEGCERT;
+  else if (d == "Associate's degrees") return DEGAA;
+  else if (d == "Bachelor's degrees") return DEGBA;
+}
+
 function displayModal(d, modalTitle) {
 
   $(".modal-title").empty();
@@ -158,7 +164,12 @@ function displayTable() {
       { data: "st" },
       { data: "c" },
       { data: "pd" },
-      { data: "y" },
+      {
+        data: "y" //,
+        // render: function (data, type, row) {
+        //   return data.replace("-", "&ndash;");
+        // }
+      },
       {
         data: "npv10",
         render: $.fn.dataTable.render.number(",", ",", 0, "$")
@@ -184,6 +195,10 @@ function displayTable() {
 }
 
 function drawChartDegreeHorizon(chtitle, sdata, currHorizon) {
+  let fmtyears = [];
+  YEARS.forEach(function (item, idx) {
+    fmtyears.push(item.replace("-", "&ndash;"));
+  });
 
   let ctitle = "";
   if (chtitle == DEGCERT) {
@@ -203,7 +218,7 @@ function drawChartDegreeHorizon(chtitle, sdata, currHorizon) {
       align: "left"
     },
     xAxis: {
-      categories: YEARS,
+      categories: fmtyears,
       accessibility: {
         description: "Year"
       }
@@ -260,7 +275,8 @@ function drawChartDegreeHorizon(chtitle, sdata, currHorizon) {
               let h = currHorizon;
               let d = chtitle;
               let yr = this.category;
-              let modalData = roiall.filter(obj => obj.y == yr && obj.pd == d && obj.c == c);
+              let datayr = yr.replace("&ndash;", "-");
+              let modalData = roiall.filter(obj => obj.y == datayr && obj.pd == d && obj.c == c);
               let mdata = [];
               if (h == 10) {
                 mdata = modalData.map(({ y, nm, st, pd, c, npv10: npv, npv15, npv20, npv30, npv40 }) =>
@@ -345,7 +361,7 @@ function drawChartYearControl(chtitle, sdata, year) {
       height: 500
     },
     title: {
-      text: "Median ROI for " + chtitle.toLowerCase() + " institutions in " + year,
+      text: "Median ROI for " + chtitle.toLowerCase() + " institutions in " + year.replace("-", "&ndash;"),
       align: "left"
     },
     xAxis: {
@@ -386,7 +402,7 @@ function drawChartYearControl(chtitle, sdata, year) {
     tooltip: {
       formatter: function () {
         return "<b>Degree:</b> " + this.series.name + "<br>" +
-          "<b>" + year + " ROI:</b> $" + Highcharts.numberFormat(this.y, 0, '.', ',') +
+          "<b>" + year.replace("-", "&ndash;") + " ROI:</b> $" + Highcharts.numberFormat(this.y, 0, '.', ',') +
           "<br><i>Click for list of institutions</i>";
       }
     },
@@ -406,8 +422,8 @@ function drawChartYearControl(chtitle, sdata, year) {
         point: {
           events: {
             click: function (e) {
-              // console.log(this);
               let d = this.series.name;
+              d = degreenameToValue(d);
               let yr = year;
               let c = chtitle;
               let h = this.category;
@@ -430,7 +446,7 @@ function drawChartYearControl(chtitle, sdata, year) {
                   ({ y, nm, st, pd, c, npv10, npv15, npv20, npv30, npv }));
               }
               $("#modal-inst").modal('show');
-              displayModal(mdata, "Median " + h + "-year ROI in " + yr + ": " + c + " institutions");
+              displayModal(mdata, "Median " + h + "-year ROI in " + yr.replace("&ndash;", "-") + ": " + c + " institutions");
             }
           }
         }
@@ -498,7 +514,7 @@ function drawChartRankDecile(sdata, horizon, year) {
       height: 500
     },
     title: {
-      text: "Likelihood of being in decile for " + horizon + "-year ROI: " + year,
+      text: "Likelihood of being in decile for " + horizon + "-year ROI: " + year.replace("-", "&ndash;"),
       align: "left"
     },
     xAxis: {
@@ -537,7 +553,7 @@ function drawChartRankDecile(sdata, horizon, year) {
     tooltip: {
       formatter: function () {
         return "<b>Degree:</b> " + this.series.name + "<br>" +
-          "<b>Decile:</b> " + this.x + "<br>" +
+          "<b>Decile:</b> " + this.category + "<br>" +
           "<b>Likelihood:</b> " + Highcharts.numberFormat(this.y, 0, '.', ',') + "% <br>" +
           "<b>Number of institutions:</b> " + this.point.N + "<br>" +
           "Click for more details";
@@ -559,6 +575,7 @@ function drawChartRankDecile(sdata, horizon, year) {
             click: function (e) {
               // console.log(this);
               let d = this.series.name;
+              d = degreenameToValue(d);
               let yr = year;
               let r = this.x + 1; // why is this zero based vs the tooltip which is 1 based?
               let h = horizon;
@@ -581,7 +598,7 @@ function drawChartRankDecile(sdata, horizon, year) {
                   ({ y, nm, st, pd, c, npv10, npv15, npv20, npv30, npv }));
               }
               $("#modal-inst").modal('show');
-              displayModal(mdata, "Median " + h + "-year ROI in " + yr);
+              displayModal(mdata, "Median " + h + "-year ROI in " + yr.replace("-", "&ndash;"));
             }
           }
         }
@@ -605,7 +622,7 @@ function drawChartRankDecileByDegree(sdata, horizon, year, degree) {
       align: "left"
     },
     subtitle: {
-      text: horizon + "-year ROI for " + year,
+      text: horizon + "-year ROI for " + year.replace("-", "&ndash;"),
       align: "left"
     },
     xAxis: {
@@ -644,7 +661,7 @@ function drawChartRankDecileByDegree(sdata, horizon, year, degree) {
     tooltip: {
       formatter: function () {
         return "<b>Degree:</b> " + this.series.name + "<br>" +
-          "<b>Decile:</b> " + this.x + "<br>" +
+          "<b>Decile:</b> " + this.category + "<br>" +
           "<b>Likelihood:</b> " + Highcharts.numberFormat(this.y, 0, '.', ',') + "% <br>" +
           "<b>Number of institutions:</b> " + this.point.N;
       },
@@ -681,13 +698,13 @@ $(document).ready(function () {
 
   // set up table for ROI over horizon
   let currType = "Public";
-  let currYear = "2021-22";
+  let currYear = YEARS[8];
   let chartData2 = getDataForChartYearControl(currYear, currType);
   drawChartYearControl(currType, chartData2, currYear);
 
   // set up table for ROI ranking
   let currRankHorizon = 10;
-  let currRankYear = "2021-22";
+  let currRankYear = YEARS[8];
   let chartData3 = getDataForRankDecile(currRankYear, currRankHorizon);
   drawChartRankDecile(chartData3, currRankHorizon, currRankYear);
 
@@ -697,6 +714,11 @@ $(document).ready(function () {
   drawChartRankDecileByDegree(chartData4, currRankHorizon, currRankYear, currRankDegree);
 
   // set up table
+  // let roiall2 = [];
+  // roiall.forEach(function (itm, idx) {
+  //   itm.y = itm.y.replace("-", "&ndash");
+  //   roiall2.push(itm);
+  // })
   displayTable();
 
   // set up page
@@ -733,8 +755,8 @@ $(document).ready(function () {
   });
 
   $("#select-year").change(function () {
-    if ($("#select-year :selected").val() > 0) {
-      currYear = $("#select-year :selected").text();
+    if ($("#select-year :selected").val() > -1) {
+      currYear = YEARS[$("#select-year :selected").val()];
       chartData2 = getDataForChartYearControl(currYear, currType);
       drawChartYearControl(currType, chartData2, currYear);
     }
@@ -750,7 +772,7 @@ $(document).ready(function () {
   // events for controls for ROI ranking
   $("#select-year-rank").change(function () {
     if ($("#select-year-rank :selected").val() > 0) {
-      currRankYear = $("#select-year-rank :selected").text();
+      currRankYear = YEARS[$("#select-year-rank :selected").val()];
       chartData3 = getDataForRankDecile(currRankYear, currRankHorizon);
       drawChartRankDecile(chartData3, currRankHorizon, currRankYear);
       chartData4 = getDataForRankDecileByDegree(chartData3, currRankDegree);
