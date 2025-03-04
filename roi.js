@@ -102,7 +102,6 @@ function displayTable() {
         .columns([1, 2, 3, 4])
         .every(function () {
           let column = this;
-
           // Create select element
           let select = document.createElement('select');
           // select.add(new Option(''));
@@ -579,22 +578,22 @@ function drawChartRankDecile(sdata, horizon, year) {
               let yr = year;
               let r = this.x + 1; // why is this zero based vs the tooltip which is 1 based?
               let h = horizon;
-              let modalData = roiall.filter(obj => obj.y == yr && obj.pd == d && obj.dnpv10 == r);
+              // let modalData = roiall.filter(obj => obj.y == yr && obj.pd == d && obj.dnpv10 == r);
               let mdata = [];
               if (h == 10) {
-                mdata = modalData.filter(obj => obj.dnpv10 == r).map(({ y, nm, st, pd, c, npv10: npv, npv15, npv20, npv30, npv40 }) =>
+                mdata = roiall.filter(obj => obj.y == yr && obj.pd == d && obj.dnpv10 == r).map(({ y, nm, st, pd, c, npv10: npv, npv15, npv20, npv30, npv40 }) =>
                   ({ y, nm, st, pd, c, npv, npv15, npv20, npv30, npv40 }));
               } else if (h == 15) {
-                mdata = modalData.filter(obj => obj.dnpv15 == r).map(({ y, nm, st, pd, c, npv10, npv15: npv, npv20, npv30, npv40 }) =>
+                mdata = roiall.filter(obj => obj.y == yr && obj.pd == d && obj.dnpv15 == r).map(({ y, nm, st, pd, c, npv10, npv15: npv, npv20, npv30, npv40 }) =>
                   ({ y, nm, st, pd, c, npv10, npv, npv20, npv30, npv40 }));
               } else if (h == 20) {
-                mdata = modalData.filter(obj => obj.dnpv20 == r).map(({ y, nm, st, pd, c, npv10, npv15, npv20: npv, npv30, npv40 }) =>
+                mdata = roiall.filter(obj => obj.y == yr && obj.pd == d && obj.dnpv20 == r).map(({ y, nm, st, pd, c, npv10, npv15, npv20: npv, npv30, npv40 }) =>
                   ({ y, nm, st, pd, c, npv10, npv15, npv, npv30, npv40 }));
               } else if (h == 30) {
-                mdata = modalData.filter(obj => obj.dnpv30 == r).map(({ y, nm, st, pd, c, npv10, npv15, npv20, npv30: npv, npv40 }) =>
+                mdata = roiall.filter(obj => obj.y == yr && obj.pd == d && obj.dnpv30 == r).map(({ y, nm, st, pd, c, npv10, npv15, npv20, npv30: npv, npv40 }) =>
                   ({ y, nm, st, pd, c, npv10, npv15, npv20, npv, npv40 }));
               } else if (h == 40) {
-                mdata = modalData.filter(obj => obj.dnpv40 == r).map(({ y, nm, st, pd, c, npv10, npv15, npv20, npv30, npv40: npv }) =>
+                mdata = roiall.filter(obj => obj.y == yr && obj.pd == d && obj.dnpv40 == r).map(({ y, nm, st, pd, c, npv10, npv15, npv20, npv30, npv40: npv }) =>
                   ({ y, nm, st, pd, c, npv10, npv15, npv20, npv30, npv }));
               }
               $("#modal-inst").modal('show');
@@ -716,7 +715,7 @@ $(document).ready(function () {
   // set up table
   // let roiall2 = [];
   // roiall.forEach(function (itm, idx) {
-  //   itm.y = itm.y.replace("-", "&ndash");
+  //   itm.y = itm.y.replace("-", "&ndash;");
   //   roiall2.push(itm);
   // })
   displayTable();
